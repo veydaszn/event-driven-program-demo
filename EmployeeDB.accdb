@@ -1,0 +1,17 @@
+-- Table: Employees
+CREATE TABLE Employees (
+    EmployeeID AUTOINCREMENT PRIMARY KEY,
+    FirstName TEXT(50),
+    LastName TEXT(50),
+    Department TEXT(50)
+);
+
+-- Table: Payroll
+CREATE TABLE Payroll (
+    PayrollID AUTOINCREMENT PRIMARY KEY,
+    EmployeeID LONG,
+    HoursWorked DOUBLE,
+    HourlyRate DOUBLE,
+    TotalPay DOUBLE,
+    Overtime BIT
+);
