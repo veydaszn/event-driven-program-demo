@@ -60,4 +60,17 @@ Public Class frmEmployees
         If conn.State = ConnectionState.Open Then conn.Close()
         Me.Close()
     End Sub
+
+Public Event EmployeeSelected(empID As Integer, fullName As String)
+
+Private Sub dgvEmployees_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvEmployees.CellDoubleClick
+    If e.RowIndex >= 0 Then
+        Dim row = dgvEmployees.Rows(e.RowIndex)
+        Dim id = Convert.ToInt32(row.Cells("EmployeeID").Value)
+        Dim name = $"{row.Cells("FirstName").Value} {row.Cells("LastName").Value}"
+        RaiseEvent EmployeeSelected(id, name)
+        Me.Close()
+    End If
+End Sub
+            
 End Class
